@@ -1,0 +1,30 @@
+blueprint:
+  name: 灯光双控
+  description: 灯控双控-主副开关
+  domain: automation
+  source_url: https://github.com/jlikeme/homeassistant
+  input:
+    main_entity:
+      name: 主开关
+      description: 主控开关，直接控制灯光
+      default: []
+      selector:
+        entity:
+          domain: light
+    second_entity:
+      name: 副开关
+      description: 虚拟开关，不直接控制灯光
+      default: []
+      selector:
+        entity:
+          domain: light
+trigger:
+  - platform: state
+    entity_id:
+      - !input main_entity
+      - !input second_entity
+action:
+  - service_template: light.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}
+    data_template:
+      entity_id: >-
+        {{ !input second_entity if trigger.entity_id == !input main_entity else !input main_entity }}
