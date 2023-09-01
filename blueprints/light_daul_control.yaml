@@ -27,7 +27,7 @@ trigger:
       - !input main_entity
       - !input second_entity
 action:
-  - service_template: light.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}
+  - service_template: homeassistant.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}
     data_template:
       entity_id: >-
         {{ second_light if trigger.entity_id == main_light else main_light }}
