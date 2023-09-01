@@ -18,6 +18,9 @@ blueprint:
       selector:
         entity:
           domain: light
+variables:
+    main_light: !input main_entity
+    second_light: !input second_entity
 trigger:
   - platform: state
     entity_id:
@@ -27,4 +30,4 @@ action:
   - service_template: light.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}
     data_template:
       entity_id: >-
-        {{ '!input second_entity' if trigger.entity_id == '!input main_entity' else '!input main_entity' }}
+        {{ 'second_light.entity_id' if trigger.entity_id == 'main_light.entity_id' else 'main_light.entity_id' }}
