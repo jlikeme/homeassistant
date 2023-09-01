@@ -30,4 +30,4 @@ action:
   - service_template: light.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}
     data_template:
       entity_id: >-
-        {{ 'second_light.entity_id' if trigger.entity_id == 'main_light.entity_id' else 'main_light.entity_id' }}
+        {{ second_light.entity_id if trigger.entity_id == main_light.entity_id else main_light.entity_id }}
