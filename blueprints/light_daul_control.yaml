@@ -10,7 +10,6 @@ blueprint:
       default: []
       selector:
         entity:
-          multiple: true
           filter:
             - domain: light
             - domain: switch
@@ -20,7 +19,6 @@ blueprint:
       default: []
       selector:
         entity:
-          multiple: true
           filter:
             - domain: light
             - domain: switch
