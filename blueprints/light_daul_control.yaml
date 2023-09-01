@@ -10,18 +10,14 @@ blueprint:
       default: []
       selector:
         entity:
-          filter:
-            - domain: light
-            - domain: switch
+          domain: ["light", "switch"]
     second_entity:
       name: 副开关
       description: 虚拟开关，不直接控制灯光
       default: []
       selector:
         entity:
-          filter:
-            - domain: light
-            - domain: switch
+          domain: ["light", "switch"]
 variables:
     main_light: !input main_entity
     second_light: !input second_entity
