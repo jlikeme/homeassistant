@@ -27,4 +27,4 @@ action:
   - service_template: light.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}
     data_template:
       entity_id: >-
-        {{ !input second_entity if trigger.entity_id == !input main_entity else !input main_entity }}
+        {{ '!input second_entity' if trigger.entity_id == '!input main_entity' else '!input main_entity' }}
